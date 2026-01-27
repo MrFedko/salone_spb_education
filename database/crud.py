@@ -90,12 +90,3 @@ class Database:
     def clean_all_values(self):
         for table in self.scheme_tables.keys():
             self.execute(f"DELETE FROM {table}")
-
-
-# def main():
-#     base = Database("../knowledge.db")
-#     base.clean_all_values()
-#
-#
-# if __name__ == "__main__":
-#     main()

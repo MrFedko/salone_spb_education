@@ -48,19 +48,3 @@ class GoogleSheetsClient:
         data = await self.get_worksheet_values_by_id(worksheet_id)
         for row in data[1:]:
             db.insert_row(db_table, row)
-
-
-# async def main():
-#     client = GoogleSheetsClient(
-#         creds_path=settings.CREDS_PATH,
-#         sheet_id=settings.SHEET_ID
-#     )
-#     db = Database(settings.DB_PATH)
-#     for name, data in settings.worksheet_ids.items():
-#         await client.upload_sheet_to_db(data[0], data[1], db)
-#
-#
-#
-# if __name__ == "__main__":
-#     import asyncio
-#     asyncio.run(main())

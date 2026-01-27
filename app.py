@@ -1,7 +1,5 @@
 from aiogram.utils.chat_action import ChatActionMiddleware
-from multiprocessing import Process
-from data.config import settings
-from handlers.users import menu_handlers
+from handlers import user_handlers
 import asyncio
 from loader import dp, bot
 from utils.misc.set_bot_commands import set_default_commands
@@ -19,7 +17,7 @@ async def on_shutdown(bot):
 
 def connect_routers():
     dp.include_routers(
-        help.router, menu_handlers.router,
+        user_handlers.router,
     )
 
 
