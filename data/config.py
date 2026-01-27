@@ -25,6 +25,14 @@ class Settings:
     "Вино": (1074670247, "wine"),
     }
 
+    db_tables = {
+        0: "cocktails",
+        1253150009: "info",
+        814666576: "cuisine",
+        1454248563: "salumeria",
+        1074670247: "wine",
+    }
+
     PROJECT_PATH = "/Users/mac/Desktop/my_projects/saloneSpbEducation/saloneSpbEducation/"
     CREDS_PATH = PROJECT_PATH + os.getenv("CREDS_PATH")
     # PROJECT_PATH = "/home/educationBot/"

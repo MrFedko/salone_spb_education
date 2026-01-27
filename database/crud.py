@@ -28,7 +28,7 @@ class Database:
     name TEXT NOT NULL,
     photo_link TEXT,
     info TEXT,
-    ingridients TEXT,
+    ingredients TEXT,
     method TEXT,
     glass TEXT
 );""")
@@ -65,7 +65,6 @@ class Database:
     extra_info TEXT
 );""")
 
-
     def create_table_wine(self):
         self.execute("""CREATE TABLE wine (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -90,3 +89,13 @@ class Database:
     def clean_all_values(self):
         for table in self.scheme_tables.keys():
             self.execute(f"DELETE FROM {table}")
+
+    def get_categories(self, table: str):
+        query = f"SELECT DISTINCT category FROM {table}"
+        result = self.execute(query, fetchall=True)
+        return [row["category"] for row in result]
+
+    def get_dishes_by_category(self, table: str, category: str):
+        query = f"SELECT name FROM {table} WHERE category = ?"
+        result = self.execute(query, params=(category, ), fetchall=True)
+        return [row["name"] for row in result]
