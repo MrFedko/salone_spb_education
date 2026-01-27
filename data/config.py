@@ -12,16 +12,21 @@ class Settings:
     BOT_TOKEN = str(os.getenv("BOT_TOKEN"))
     EMAIL_CONTROLLER = str(os.getenv("EMAIL_CONTROLLER"))
     SHEET_ID = str(os.getenv("SHEET_ID"))
-    CREDS_PATH = os.getenv("CREDS_PATH")
 
     admins = [
         os.getenv("ADMIN_ID"),
     ]
 
     worksheet_ids = {
+    "Коктейли и бар": (0, "cocktails"),
+    "Информация": (1253150009, "info"),
+    "Кухня": (814666576, "cuisine"),
+    "Salumeria": (1454248563, "salumeria"),
+    "Вино": (1074670247, "wine"),
     }
 
     PROJECT_PATH = "/Users/mac/Desktop/my_projects/saloneSpbEducation/saloneSpbEducation/"
+    CREDS_PATH = PROJECT_PATH + os.getenv("CREDS_PATH")
     # PROJECT_PATH = "/home/educationBot/"
     DB_PATH = PROJECT_PATH + DB_NAME
     SERVER_IP = "localhost"
