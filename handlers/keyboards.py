@@ -79,3 +79,17 @@ def dishes_by_category_keyboard(callback_data: menu_cd, dishes: list) -> InlineK
     )
     markup.row(back_button)
     return markup.as_markup()
+
+
+def back_button_final(callback_data: menu_cd) -> InlineKeyboardMarkup:
+    markup = InlineKeyboardBuilder()
+    back_button = InlineKeyboardButton(
+        text="⬅️ Назад",
+        callback_data=menu_cd(
+            level=2,
+            sheet_id=callback_data.sheet_id,
+            category_index=callback_data.category_index,
+        ).pack()
+    )
+    markup.row(back_button)
+    return markup.as_markup()

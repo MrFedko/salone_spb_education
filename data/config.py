@@ -34,9 +34,11 @@ class Settings:
     }
 
     PROJECT_PATH = "/Users/mac/Desktop/my_projects/saloneSpbEducation/saloneSpbEducation/"
-    CREDS_PATH = PROJECT_PATH + os.getenv("CREDS_PATH")
     # PROJECT_PATH = "/home/educationBot/"
+    CREDS_PATH = PROJECT_PATH + os.getenv("CREDS_PATH")
+    PHOTO_PATH = PROJECT_PATH + "data/photo/"
     DB_PATH = PROJECT_PATH + DB_NAME
+    CREDS_PATH = PROJECT_PATH + os.getenv("CREDS_PATH")
     SERVER_IP = "localhost"
     SERVER_PORT = 8000
     SERVER_LINK = f"http://{SERVER_IP}:{SERVER_PORT}"

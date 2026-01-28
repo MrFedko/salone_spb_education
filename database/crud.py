@@ -28,7 +28,7 @@ class Database:
     name TEXT NOT NULL,
     photo_link TEXT,
     info TEXT,
-    ingredients TEXT,
+    ingridients TEXT,
     method TEXT,
     glass TEXT
 );""")
@@ -99,3 +99,28 @@ class Database:
         query = f"SELECT name FROM {table} WHERE category = ?"
         result = self.execute(query, params=(category, ), fetchall=True)
         return [row["name"] for row in result]
+
+    def get_dish_detail(self, table: str, dish_name: str):
+        query = f"SELECT * FROM {table} WHERE name = ?"
+        result = self.execute(query, params=(dish_name, ), fetchone=True)
+        return dict(result)
+
+    def get_records_with_photo(self):
+        results = []
+        for table_name in self.scheme_tables.keys():
+            query = f"SELECT id, photo_link FROM {table_name} WHERE photo_link IS NOT NULL AND TRIM(photo_link) != ''"
+            records = self.execute(query, fetchall=True)
+            for row in records:
+                results.append({
+                    'table': table_name,
+                    'id': row['id'],
+                    'photo_link': row['photo_link'],
+                })
+        return results
+#
+# def main():
+#     db = Database("../knowledge.db")
+#     db.clean_all_values()
+#
+# if __name__ == "__main__":
+#     main()

@@ -6,6 +6,7 @@ from aiogram.client.session.aiohttp import AiohttpSession
 from data.config import settings
 from database.crud import Database
 from utils.sheets import GoogleSheetsClient
+from utils.message_builder import MessageBuilder
 
 
 session = AiohttpSession()
@@ -17,3 +18,4 @@ client = GoogleSheetsClient(
     creds_path=settings.CREDS_PATH,
     sheet_id=settings.SHEET_ID
 )
+messageBuilder = MessageBuilder()

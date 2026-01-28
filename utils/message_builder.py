@@ -2,7 +2,7 @@ class MessageBuilder:
     def __init__(self):
         self.names = {
             "info": "Информация",
-            "ingredients": "Ингредиенты",
+            "ingridients": "Ингредиенты",
             "method": "Метод приготовления",
             "glass": "Посуда",
             "file_link": "Ссылка на файл",
@@ -15,7 +15,7 @@ class MessageBuilder:
             "about": "Описание",
             "taste": "Вкус",
         }
-        self.EXCLUDED_KEYS = {"name", "id", "photo_link"}
+        self.EXCLUDED_KEYS = {"name", "id", "photo_link", "category"}
 
     def message_return(self, sheet_name: str):
         types_messages = {

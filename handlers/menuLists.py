@@ -13,7 +13,18 @@ async def list_start_menu(message: Union[CallbackQuery, Message], **kwargs):
 
     elif isinstance(message, CallbackQuery):
         call = message
-        await call.message.edit_text(text, reply_markup=markup)
+        if call.message.photo:
+            await call.message.edit_caption(
+                caption=text,
+                reply_markup=markup,
+                parse_mode="HTML"
+            )
+        else:
+            await call.message.edit_text(
+                text,
+                reply_markup=markup,
+                parse_mode="HTML"
+            )
 
 
 async def list_sheet_categories_menu(message: Union[CallbackQuery, Message], categories: list, callback_data):
@@ -25,7 +36,18 @@ async def list_sheet_categories_menu(message: Union[CallbackQuery, Message], cat
 
     elif isinstance(message, CallbackQuery):
         call = message
-        await call.message.edit_text(text, reply_markup=markup)
+        if call.message.photo:
+            await call.message.edit_caption(
+                caption=text,
+                reply_markup=markup,
+                parse_mode="HTML"
+            )
+        else:
+            await call.message.edit_text(
+                text,
+                reply_markup=markup,
+                parse_mode="HTML"
+            )
 
 async def list_dishes_by_category_menu(message: Union[CallbackQuery, Message], dishes: list, callback_data):
     text = lexicon["choose_dish"]
@@ -36,4 +58,16 @@ async def list_dishes_by_category_menu(message: Union[CallbackQuery, Message], d
 
     elif isinstance(message, CallbackQuery):
         call = message
-        await call.message.edit_text(text, reply_markup=markup)
+        if call.message.photo:
+            await call.message.delete()
+            await call.message.answer(
+                text=text,
+                reply_markup=markup,
+                parse_mode="HTML"
+            )
+        else:
+            await call.message.edit_text(
+                text,
+                reply_markup=markup,
+                parse_mode="HTML"
+            )
