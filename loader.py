@@ -5,6 +5,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.session.aiohttp import AiohttpSession
 from data.config import settings
 from database.crud import Database
+from utils.photo_loader import PhotoLoader
 from utils.sheets import GoogleSheetsClient
 from utils.message_builder import MessageBuilder
 
@@ -19,3 +20,4 @@ client = GoogleSheetsClient(
     sheet_id=settings.SHEET_ID
 )
 messageBuilder = MessageBuilder()
+photo_loader = PhotoLoader(settings.PHOTO_PATH, max_concurrent=3, delay=1)

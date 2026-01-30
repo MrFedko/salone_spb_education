@@ -3,8 +3,6 @@ from io import BytesIO
 import aiohttp
 import asyncio
 import os
-from data.config import settings
-from loader import dataBase
 from PIL import Image
 
 class PhotoLoader:
@@ -59,9 +57,9 @@ class PhotoLoader:
             await asyncio.gather(*tasks)
 
 
-async def main():
-    photo_loader = PhotoLoader(settings.PHOTO_PATH, max_concurrent=3, delay=1)
-    await photo_loader.download_photos(dataBase.get_records_with_photo())
-
-if __name__ == "__main__":
-    asyncio.run(main())
+# async def main():
+#     photo_loader = PhotoLoader(settings.PHOTO_PATH, max_concurrent=3, delay=1)
+#     await photo_loader.download_photos(dataBase.get_records_with_photo())
+#
+# if __name__ == "__main__":
+#     asyncio.run(main())
