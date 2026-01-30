@@ -21,7 +21,7 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           script: |
             # Переходим в директорию проекта
-            cd /home/controlBot
+            cd /home/educationBot/salone_spb_education/
                   git pull
                   sudo systemctl stop educationbot
                   sudo systemctl enable educationbot

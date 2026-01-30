@@ -43,6 +43,5 @@ class Settings:
     SERVER_IP = "localhost"
     SERVER_PORT = 8000
     SERVER_LINK = f"http://{SERVER_IP}:{SERVER_PORT}"
-    # GOOGLE_DRIVE_FOLDER_ID = "1v7he5jjYeT-sXtbySeMvLA2R_ls-wRzW"
 
 settings = Settings()
