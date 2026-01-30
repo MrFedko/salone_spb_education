@@ -34,6 +34,7 @@ class Settings:
     }
 
     # PROJECT_PATH = "/Users/mac/Desktop/my_projects/saloneSpbEducation/saloneSpbEducation/"
+
     PROJECT_PATH = "/home/educationBot/salone_spb_education/"
     CREDS_PATH = PROJECT_PATH + os.getenv("CREDS_PATH")
     PHOTO_PATH = PROJECT_PATH + "data/photo/"
