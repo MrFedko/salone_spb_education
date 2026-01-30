@@ -14,14 +14,26 @@ class PhotoLoader:
 
     def _normalize_and_save(self, content: bytes, filepath: str):
         """
-        Приводит изображение к Telegram-safe JPEG
+        Telegram-safe JPEG:
+        нормальное качество + минимальный вес
         """
         try:
             with Image.open(BytesIO(content)) as img:
                 img = img.convert("RGB")
-                img.thumbnail((4096, 4096))
-                img.save(filepath, "JPEG", quality=85)
+
+                # Telegram реально не выигрывает от >2048px
+                img.thumbnail((2048, 2048), Image.LANCZOS)
+
+                img.save(
+                    filepath,
+                    "JPEG",
+                    quality=80,  # sweet spot
+                    optimize=True,  # важно!
+                    progressive=True,  # уменьшает вес + быстрее грузится
+                    subsampling=2  # 4:2:0, почти без потери качества
+                )
                 return True
+
         except Exception as e:
             print(f"Image normalization failed: {e}")
             return False
